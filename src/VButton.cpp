@@ -1,7 +1,7 @@
 #include <M5Core2.h>
 #include "VButton.h"
 
-VButton::VButton(char *title, void (* callback)(char *, bool, bool), bool use_toggle, int position, uint color){
+VButton::VButton(char *title, void (* callback)(char *, bool, bool), bool use_toggle, int position, ushort color){
 	this->title = title;
 	this->callback = callback;
 	this->use_toggle = use_toggle;
@@ -53,18 +53,18 @@ void VButton::loop(){
 }
 
 // rgb = {RED, GREEN, BLUE}
-void VButton::get_rgb(ushort color, uint rgb[3]){
+void VButton::get_rgb(ushort color, ushort rgb[3]){
 	rgb[0] = (color & 0xF800) >> 8;
 	rgb[1] = (color & 0x07E0) >> 3;
 	rgb[2] = (color & 0x001F) << 3;
 }
 
-ushort VButton::create_color(uint rgb[3]){
+ushort VButton::create_color(ushort rgb[3]){
   return ((rgb[0]>>3)<<11) | ((rgb[1]>>2)<<5) | (rgb[2]>>3);
 }
 
-ushort VButton::create_background_color_normal(uint color){
-	uint rgb[3];
+ushort VButton::create_background_color_normal(ushort color){
+	ushort rgb[3];
 	this->get_rgb(color, rgb);
 	for(int i=0; i<3; i++) {
 		rgb[i] += 200;
@@ -75,8 +75,8 @@ ushort VButton::create_background_color_normal(uint color){
 	return this->create_color(rgb);
 }
 
-ushort VButton::create_background_color_toggle(uint color){
-	uint rgb[3];
+ushort VButton::create_background_color_toggle(ushort color){
+	ushort rgb[3];
 	this->get_rgb(color, rgb);
 	for(int i=0; i<3; i++) {
 		rgb[i] += 100;

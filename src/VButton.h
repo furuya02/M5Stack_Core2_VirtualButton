@@ -3,7 +3,7 @@
 
 class VButton {
 	public:
-		VButton(char *title, void (* callback)(char *, bool, bool), bool use_toggle = false,int position = 0, uint color = RED);  
+		VButton(char *title, void (* callback)(char *, bool, bool), bool use_toggle = false,int position = 0, ushort color = RED);  
 		void loop();
 
 	private:
@@ -27,14 +27,14 @@ class VButton {
 		void (* callback)(char *, bool, bool);
 
 		// Color
-		uint line_color;
-		uint background_color_normal;
-		uint background_color_toggle;
+		ushort line_color;
+		ushort background_color_normal;
+		ushort background_color_toggle;
 
-		void get_rgb(ushort color, uint rgb[3]);
-		ushort create_color(uint rgb[3]);
-		ushort create_background_color_normal(uint color);
-		ushort create_background_color_toggle(uint color);
+		void get_rgb(ushort color, ushort rgb[3]);
+		ushort create_color(ushort rgb[3]);
+		ushort create_background_color_normal(ushort color);
+		ushort create_background_color_toggle(ushort color);
 	
 		// Display
 		void dispButton(int position, bool toggle);

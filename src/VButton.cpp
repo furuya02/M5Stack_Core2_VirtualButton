@@ -13,6 +13,9 @@ VButton::VButton(char *title, void (* callback)(char *, bool, bool), bool use_to
 	int default_width = 150;
 	int default_height = 50;
 	int default_line_width = 3;
+	width = default_width;
+	height = default_height;
+	line_width = default_line_width;
 
 	display_center_x = M5.Lcd.width()/2;
 	display_center_y = M5.Lcd.height()/2;
@@ -22,9 +25,6 @@ VButton::VButton(char *title, void (* callback)(char *, bool, bool), bool use_to
 	lx = display_center_x +  width/2;
 	h = height/2;
 
-	width = default_width;
-	height = default_height;
-	line_width = default_line_width;
 	this->position = position;
 
 	dispButton(position, false);
